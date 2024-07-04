@@ -53,15 +53,20 @@ function prevShow() {
 }
 prevShow()
 form.onsubmit = (e) => {
-    e.preventDefault()
+  e.preventDefault()
+  if (inputTask.value !== "") {
     const obj = {
-        id: generateRandomId(),
-        task: inputTask.value,
+      id: generateRandomId(),
+      task: inputTask.value,
     }
     pendingTask.push(obj)
     inputTask.value = ""
-   localStorage.setItem("pending-task",JSON.stringify(pendingTask))
-    pendingtaskBox.innerHTML=ArrayToString(pendingTask)
+    localStorage.setItem("pending-task", JSON.stringify(pendingTask))
+    pendingtaskBox.innerHTML = ArrayToString(pendingTask)
+  }
+  else {
+    alert("Please Fill the data")
+  }
 }
 
 
